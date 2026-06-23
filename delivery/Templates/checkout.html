@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        .test-help {
+            background: #fff8e1;
+            border: 1px solid #f0c36d;
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin: 16px 0;
+            max-width: 640px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .test-help h4 {
+            margin: 0 0 8px;
+        }
+        .test-help ul {
+            margin: 8px 0;
+            padding-left: 20px;
+        }
+        .dev-skip {
+            margin-top: 12px;
+        }
+    </style>
+
+    {% load static %}
+    <link href="{% static 'style5.css' %}" rel="stylesheet">
+</head>
+<body>
+    <h1>Checkout</h1>
+    <h2>Welcome, {{ username }}</h2>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    <p><a href="{% url 'show_cart' username %}">Back to cart</a></p>
+    {% else %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>₹{{ item.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Total: ₹{{ total_price }}</h3>
+
+    {% if is_test_mode %}
+    <div class="test-help">
+        <h4>Test Mode payment (use this)</h4>
+        <ol>
+            <li>Click <strong>Pay with Razorpay</strong></li>
+            <li>Choose <strong>Cards</strong></li>
+            <li>Enter card: <strong>5267 3181 8797 5449</strong></li>
+            <li>Expiry: any future date | CVV: any 3 digits</li>
+            <li>When OTP is asked, enter <strong>any random OTP</strong> and submit</li>
+        </ol>
+        <p>Do not use Chrome saved cards or other test card numbers — they may show "International cards are not supported" on this account.</p>
+    </div>
+    {% endif %}
+
+    <button
+        id="rzp-button1"
+        type="button"
+        data-key="{{ razorpay_key_id }}"
+        data-amount="{{ amount_paise }}"
+        data-order-id="{{ order_id }}"
+        data-verify-url="{% url 'verify_payment' username %}"
+        data-name="{{ username }}"
+        data-email="{{ customer.email }}"
+        data-contact="{{ customer.mobile }}"
+    >
+        Pay with Razorpay
+    </button>
+
+    {% if debug %}
+    <p class="dev-skip">
+        <a href="{% url 'skip_payment_dev' username %}">Skip payment (dev only)</a>
+    </p>
+    {% endif %}
+
+    <script>
+        (function () {
+            var payButton = document.getElementById("rzp-button1");
+            var checkoutData = payButton.dataset;
+
+            var options = {
+                key: checkoutData.key,
+                amount: parseInt(checkoutData.amount, 10),
+                currency: "INR",
+                name: "Meal Buddy",
+                description: "Order Payment",
+                order_id: checkoutData.orderId,
+                handler: function (response) {
+                    var form = document.createElement("form");
+                    form.method = "POST";
+                    form.action = checkoutData.verifyUrl;
+
+                    var fields = {
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature
+                    };
+
+                    for (var name in fields) {
+                        var input = document.createElement("input");
+                        input.type = "hidden";
+                        input.name = name;
+                        input.value = fields[name];
+                        form.appendChild(input);
+                    }
+
+                    document.body.appendChild(form);
+                    form.submit();
+                },
+                prefill: {
+                    name: checkoutData.name,
+                    email: checkoutData.email,
+                    contact: checkoutData.contact
+                },
+                theme: {
+                    color: "#528FF0"
+                },
+                config: {
+                    display: {
+                        hide: [
+                            { method: "paylater" },
+                            { method: "emi" }
+                        ]
+                    }
+                }
+            };
+
+            var rzp = new Razorpay(options);
+
+            rzp.on("payment.failed", function (response) {
+                var message = response.error.description || "Payment failed. Please try again.";
+                if (message.toLowerCase().indexOf("international") !== -1) {
+                    message += "\n\nUse test card 5267 3181 8797 5449 with any random OTP.";
+                }
+                alert(message);
+            });
+
+            payButton.onclick = function (e) {
+                rzp.open();
+                e.preventDefault();
+            };
+        })();
+    </script>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,205 @@
+/* ===========================================
+   MEALMATE - Simple Stylesheet
+   Basic CSS only - easy to explain
+   =========================================== */
+
+/* Page background and default text */
+body {
+    background-color: #FFF8F0;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0; 
+    
+}
+
+/* Main heading */
+h1 {
+    background-color: #2E4F3C;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    margin: 0 0 20px 0;
+    
+}
+
+/* Sub headings */
+h2, h3 {
+    color: #2E4F3C;
+    text-align: center;
+}
+
+/* Links styled as buttons */
+a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #2E4F3C;
+    background-color: #FFFFFF;
+    border: 2px solid #E3A857;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 6px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #E3A857;
+    color: #FFFFFF;
+}
+
+/* -----------------------------------------------
+   INDEX PAGE - centers Sign Up and Sign In buttons
+----------------------------------------------- */
+body {
+    text-align: center;
+}
+
+/* -----------------------------------------------
+   SIGNIN AND SIGNUP - form centered on screen
+----------------------------------------------- */
+form {
+    background-color: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 8px;
+    padding: 30px;
+    width: 100%;
+    max-width: 400px;
+    margin: 40px auto;
+    box-shadow: 0px 2px 8px #DDDDDD;
+    text-align: left;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #2E4F3C;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    background-color: #E3A857;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2E4F3C;
+}
+
+/* Small link below the form */
+p {
+    text-align: center;
+}
+
+/* -----------------------------------------------
+   TABLE - restaurant list and menu list
+----------------------------------------------- */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+}
+
+th, td {
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #2E4F3C;
+    color: #FFFFFF;
+}
+
+/* Restaurant picture - big and appealing */
+table img {
+    width: 250px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Menu item picture - slightly smaller but still big */
+table td img {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ===========================================
+   RESPONSIVE STYLES
+   These apply only on smaller screens
+   =========================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+
+    table img {
+        width: 180px;
+        height: 130px;
+    }
+
+    table td img {
+        width: 140px;
+        height: 100px;
+    }
+
+    form {
+        max-width: 90%;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 22px;
+        padding: 15px;
+    }
+
+    a {
+        display: block;
+        margin: 8px auto;
+        width: 60%;
+    }
+
+    table, th, td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    table img {
+        width: 120px;
+        height: 90px;
+    }
+
+    table td img {
+        width: 100px;
+        height: 75px;
+    }
+
+    form {
+        padding: 15px;
+        max-width: 100%;
+    }
+}

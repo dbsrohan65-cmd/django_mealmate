@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Below two lines were added from claude  -->
+    {% load static %}
+    <link href="{% static 'style3.css' %}" rel="stylesheet">
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Picture</th>
+                <th>Cusine</th>
+                <th>Rating</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in restaurantList %}
+            <tr>
+                <td>{{ r.name }}</td>
+                <td>
+                    <img src="{{ r.picture }}">
+                </td>
+                <td>{{ r.cusine }}</td>
+                <td>{{ r.rating }}</td>
+                <td>
+                    <a href="{% url 'open_update_restaurant' r.id %}">
+                        Update Restaurant Info
+                    </a>
+                    <br>
+                    <a href="{% url 'delete_restaurant' r.id %}">
+                        Delete Restaurant
+                    </a>
+                    <br>
+                    <a href="{% url 'open_update_menu' r.id %}">
+                        Update Menu
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,305 @@
+/* =========================================================
+   MEALMATE — visual system
+   "Chalkboard menu board" identity
+   Palette : chalkboard green / cream paper / mustard / tomato
+   Display : Oswald   (condensed caps, menu-board lettering)
+   Body    : Source Sans 3
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+:root {
+  --ink:         #23291f;
+  --paper:       #FAF6EE;
+  --board:       #1E3A2E;
+  --board-deep:  #142922;
+  --mustard:     #E3A857;
+  --mustard-deep:#C9883A;
+  --tomato:      #C0432B;
+  --line:        #E3DACB;
+  --white:       #FFFFFF;
+  --radius:      10px;
+  --shadow:      0 4px 16px rgba(20, 41, 34, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Sans 3', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Constrains every page's content to a readable column */
+.page-wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* ---------------------------------------------------------
+   Headings — h1 acts as the page's "menu board" banner and
+   bleeds full-width regardless of where it sits in the page
+   --------------------------------------------------------- */
+h1 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+  color: var(--paper);
+  background: var(--board);
+  text-align: center;
+  margin: 0 0 40px;
+  padding: 30px 16px;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  border-bottom: 6px double var(--mustard);
+}
+
+h2, h3 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--board);
+  text-align: left;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin-top: 40px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--mustard);
+  display: inline-block;
+}
+
+h3 {
+  font-size: 1.05rem;
+}
+
+/* ---------------------------------------------------------
+   Links — rendered as ticket-stub style nav buttons
+   --------------------------------------------------------- */
+a {
+  font-style: normal;
+  text-align: center;
+  color: var(--board-deep);
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 10px 22px;
+  margin: 6px 8px;
+  border: 2px dashed var(--mustard-deep);
+  border-radius: 999px;
+  background: var(--white);
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+a:hover,
+a:focus-visible {
+  background: var(--mustard);
+  border-color: var(--mustard);
+  color: var(--board-deep);
+  outline: none;
+}
+
+/* ---------------------------------------------------------
+   Forms — order tickets in card form
+   --------------------------------------------------------- */
+form {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 4px solid var(--mustard);
+  padding: 32px 28px;
+  max-width: 460px;
+  margin: 20px auto;
+}
+
+label {
+  display: block;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: var(--mustard-deep);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: 'Source Sans 3', Arial, sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: none;
+  border-bottom: 2px solid var(--line);
+  border-radius: 4px 4px 0 0;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-bottom-color: var(--mustard);
+  background: var(--white);
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+  accent-color: var(--mustard-deep);
+}
+
+button {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+  padding: 12px 20px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--board-deep);
+  background: var(--mustard);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+button:hover,
+button:focus-visible {
+  background: var(--tomato);
+  color: var(--white);
+  outline: none;
+}
+
+/* ---------------------------------------------------------
+   Tables — restaurant & menu listings styled like a board
+   --------------------------------------------------------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 40px;
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+thead th {
+  background: var(--board);
+  color: var(--paper);
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 12px 10px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:nth-child(even) {
+  background: var(--paper);
+}
+
+tbody tr:hover {
+  background: rgba(227, 168, 87, 0.18);
+}
+
+table img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  display: block;
+}
+
+/* links inside table cells become compact action chips */
+table a {
+  display: block;
+  margin: 4px auto;
+  font-size: 0.7rem;
+  padding: 6px 14px;
+}
+
+/* delete actions get a tomato treatment */
+table a[href*="delete"] {
+  border-color: var(--tomato);
+  color: var(--tomato);
+}
+
+table a[href*="delete"]:hover {
+  background: var(--tomato);
+  color: var(--white);
+  border-color: var(--tomato);
+}
+
+/* ---------------------------------------------------------
+   Responsive
+   --------------------------------------------------------- */
+@media (max-width: 600px) {
+  h1 {
+    padding: 22px 12px;
+    letter-spacing: 0.05em;
+  }
+
+  form {
+    padding: 24px 18px;
+  }
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    font-size: 0.85rem;
+  }
+
+  table img {
+    width: 56px;
+    height: 42px;
+  }
+
+  a {
+    padding: 8px 16px;
+    font-size: 0.78rem;
+  }
+}

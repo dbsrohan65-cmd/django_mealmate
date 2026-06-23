@@ -1,0 +1,233 @@
+/* ===========================================
+   MEALMATE - style4.css
+   For cart.html and checkout.html
+   Same colours as style3.css
+   =========================================== */
+
+/* Page background and default text */
+body {
+    background-color: #FFF8F0;
+    color: #333333;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Main heading */
+h1 {
+    background-color: #2E4F3C;
+    color: #FFFFFF;
+    text-align: center;
+    padding: 20px;
+    margin: 0 0 20px 0;
+}
+
+/* Sub headings */
+h2, h3 {
+    color: #2E4F3C;
+    text-align: center;
+}
+
+/* Links styled as buttons */
+a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    color: #2E4F3C;
+    background-color: #FFFFFF;
+    border: 2px solid #E3A857;
+    border-radius: 8px;
+    padding: 8px 16px;
+    margin: 6px;
+    font-weight: bold;
+}
+
+a:hover {
+    background-color: #E3A857;
+    color: #FFFFFF;
+}
+
+/* -----------------------------------------------
+   TABLE - cart items and checkout items
+----------------------------------------------- */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+}
+
+th, td {
+    border: 1px solid #DDDDDD;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #2E4F3C;
+    color: #FFFFFF;
+}
+
+/* Cart item image */
+table img {
+    width: 160px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* -----------------------------------------------
+   CART PAGE - greeting text
+----------------------------------------------- */
+.cart-greeting {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2E4F3C;
+    margin: 20px 0 10px 0;
+}
+
+/* -----------------------------------------------
+   CHECKOUT BUTTON - inside the cart form
+   Fixes the full-width input submit button
+----------------------------------------------- */
+form {
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* This fixes the checkout button that was stretching end to end */
+input[type="submit"] {
+    width: auto;
+    display: inline-block;
+    background-color: #E3A857;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #2E4F3C;
+}
+
+/* -----------------------------------------------
+   PAY WITH RAZORPAY BUTTON
+   Fixes the full-width button on checkout page
+----------------------------------------------- */
+#rzp-button1 {
+    width: auto;
+    display: inline-block;
+    background-color: #E3A857;
+    color: #FFFFFF;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 20px auto;
+}
+
+#rzp-button1:hover {
+    background-color: #2E4F3C;
+}
+
+/* -----------------------------------------------
+   TEST MODE HELP BOX - checkout page
+----------------------------------------------- */
+.test-help {
+    background-color: #FFF8E1;
+    border: 1px solid #E3A857;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 16px auto;
+    max-width: 500px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.test-help h4 {
+    margin: 0 0 8px 0;
+    color: #2E4F3C;
+}
+
+.test-help ol {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+/* -----------------------------------------------
+   DEV SKIP LINK - checkout page
+----------------------------------------------- */
+.dev-skip {
+    margin-top: 12px;
+    text-align: center;
+}
+
+/* -----------------------------------------------
+   ERROR MESSAGE - checkout page
+----------------------------------------------- */
+p {
+    text-align: center;
+}
+
+/* ===========================================
+   RESPONSIVE STYLES
+   =========================================== */
+
+/* Tablets */
+@media (max-width: 768px) {
+
+    table img {
+        width: 120px;
+        height: 90px;
+    }
+
+    #rzp-button1 {
+        padding: 10px 30px;
+    }
+
+    input[type="submit"] {
+        padding: 10px 30px;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 22px;
+        padding: 15px;
+    }
+
+    table, th, td {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    table img {
+        width: 90px;
+        height: 70px;
+    }
+
+    #rzp-button1 {
+        width: 80%;
+        padding: 12px 20px;
+    }
+
+    input[type="submit"] {
+        width: 80%;
+        padding: 12px 20px;
+    }
+
+    .test-help {
+        max-width: 95%;
+        padding: 12px;
+    }
+}
