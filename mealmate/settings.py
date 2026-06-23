@@ -119,3 +119,5 @@ STATIC_URL = '/static/'
 
 RAZORPAY_KEY_ID = 'rzp_test_T2CcyEkTFglKsL'
 RAZORPAY_KEY_SECRET = 'VniEh2xVSoPNkd1dem8VmggJ'
+
+ALLOWED_HOSTS = ['*']
