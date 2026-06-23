@@ -57,7 +57,7 @@
     </table>
     <h3>Total: ₹{{ total_price }}</h3>
 
-    {% if is_test_mode %}
+    <!-- {% if is_test_mode %}
     <div class="test-help">
         <h4>Test Mode payment (use this)</h4>
         <ol>
@@ -69,7 +69,7 @@
         </ol>
         <p>Do not use Chrome saved cards or other test card numbers — they may show "International cards are not supported" on this account.</p>
     </div>
-    {% endif %}
+    {% endif %} -->
 
     <button
         id="rzp-button1"
@@ -85,11 +85,11 @@
         Pay with Razorpay
     </button>
 
-    {% if debug %}
+    <!-- {% if debug %}
     <p class="dev-skip">
         <a href="{% url 'skip_payment_dev' username %}">Skip payment (dev only)</a>
     </p>
-    {% endif %}
+    {% endif %} -->
 
     <script>
         (function () {
